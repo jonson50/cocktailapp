@@ -1,0 +1,27 @@
+<!-- Alcholic Drinks -->
+<div class="w3-container w3-margin-top">
+  <h3>Alcoholic Drinks</h3>
+</div>
+<div class="w3-row-padding w3-text-white w3-large" *ngIf="randomCocktails.length">
+  <div class="w3-half w3-margin-bottom">
+    <app-banner-image [CocktailImage]="randomCocktails[0]"></app-banner-image>
+  </div>
+  <div class="w3-half">
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <app-banner-image [CocktailImage]="randomCocktails[1]"></app-banner-image>
+      </div>
+      <div class="w3-half w3-margin-bottom">
+        <app-banner-image [CocktailImage]="randomCocktails[2]"></app-banner-image>
+      </div>
+    </div>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <app-banner-image [CocktailImage]="randomCocktails[3]"></app-banner-image>
+      </div>
+      <div class="w3-half w3-margin-bottom">
+        <app-banner-image [CocktailImage]="randomCocktails[4]"></app-banner-image>
+      </div>
+    </div>
+  </div>
+</div>
