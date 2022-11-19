@@ -15,14 +15,12 @@ export class NonAlcoholicBannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getNonAlcoholics().subscribe(c => {
-      console.log(c)
       this.cocktails = c;
 
       while (this.randomCocktails.length < 5) {
         const random = Math.floor(Math.random() * this.cocktails.length);
         this.randomCocktails.push(this.cocktails[random]);
       }
-      console.log(this.randomCocktails);
     });
   }
 }

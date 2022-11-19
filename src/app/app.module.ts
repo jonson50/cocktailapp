@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,12 @@ import { CocktailDetailComponent } from './components/cocktail-detail/cocktail-d
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BannerImageComponent } from './components/banner-image/banner-image.component';
+import { ResultsPageComponent } from './results-page/results-page.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './state/app.reducer';
+import { CocktailCardComponent } from './components/cocktail-card/cocktail-card.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './state/app.effects';
 
 @NgModule({
   declarations: [
@@ -23,12 +30,17 @@ import { BannerImageComponent } from './components/banner-image/banner-image.com
     PopularsComponent,
     CocktailDetailComponent,
     HomeComponent,
-    BannerImageComponent
+    BannerImageComponent,
+    ResultsPageComponent,
+    CocktailCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({state: appReducer}),
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

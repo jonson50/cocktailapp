@@ -1,1 +1,6 @@
-<p>populars works!</p>
+<div class="w3-container">
+  <h4>Populars</h4>
+</div>
+<div class="w3-row-padding">
+  <app-cocktail-card *ngFor="let cocktail of cocktails$ | async" [cocktail]="cocktail"></app-cocktail-card>
+</div>

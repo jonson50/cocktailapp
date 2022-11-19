@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, mergeMap, Observable, of, zip } from 'rxjs';
 import { CallCocktailListResponse, CocktailList, Cocktail } from '../interfaces/cocktail.interface';
+import { Alcoholic, Categorie, Glass, Ingredient, SearchOption } from '../interfaces/state.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CocktailService {
@@ -23,6 +24,42 @@ export class CocktailService {
   getCocktailById(id: string): Observable<Cocktail> {
     return this.http.get<Cocktail>(`${this.baseUrl}lookup.php?i=${id}`).pipe(
       map((c: any) => c.drinks[0])
+    )
+  }
+
+  getRandomCocktail(): Observable<any> {
+    return this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(
+      map((c: any) => c.drinks[0]),
+      mergeMap((cocktail:Cocktail) => {
+        return zip(
+          of(cocktail),
+          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0])),
+          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0])),
+          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
+        )
+      })
+    )
+  }
+
+  getSearchOptions(): Observable<SearchOption> {
+    return this.http.get<Categorie>(`${this.baseUrl}list.php?c=list`).pipe(
+      map((c: any) => c.drinks),
+      mergeMap((categorie:Categorie) => {
+        return zip(
+          of(categorie),
+          this.http.get<Glass>(`${this.baseUrl}list.php?g=list`).pipe(map((c: any) => c.drinks)),
+          this.http.get<Ingredient>(`${this.baseUrl}list.php?i=list`).pipe(map((c: any) => c.drinks)),
+          this.http.get<Alcoholic>(`${this.baseUrl}list.php?a=list`).pipe(map((c: any) => c.drinks))
+        )
+      }),
+      map(([categories, glasses, ingredients, alcoholics]: any[]) => {
+        return ({
+                 categories,
+                 glasses,
+                 ingredients,
+                 alcoholics
+              });
+     }),
     )
   }
 }

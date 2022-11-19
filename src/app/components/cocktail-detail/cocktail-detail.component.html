@@ -11,9 +11,9 @@
     <div class="w3-half">
       <div class="w3-row-padding" style="margin:0 -16px">
         <div class="w3-container">
-          <p><span class="w3-tag w3-orange w3-round">{{ cocktail.strAlcoholic | titlecase }}</span></p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-orange" *ngIf="cocktail.strTags"></i>{{ cocktail.strTags | titlecase }}</p>
-          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-orange"></i>{{ cocktail.strGlass | titlecase }}</p>
+          <p><span class="w3-tag w3-red w3-round">{{ cocktail.strAlcoholic | titlecase }}</span></p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-red" *ngIf="cocktail.strTags"></i>{{ cocktail.strTags | titlecase }}</p>
+          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-red"></i>{{ cocktail.strGlass | titlecase }}</p>
         </div>
       </div>
       <br class="w3-hide-small">
@@ -87,47 +87,6 @@
     </div>
   </div>
   <hr>
-  <!-- Explore Nature -->
-  <div class="w3-container">
-    <h2>Populars</h2>
-  </div>
-  <div class="w3-row-padding">
-    <div class="w3-quarter w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="./assets/images/ocean2.jpg" alt="Norway" style="width:100%">
-        <div class="w3-container w3-white">
-          <h6 class="w3-text-orange">West Coast, Norway</h6>
-          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-orange"></i>Designer</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="./assets/images/mountains2.jpg" alt="Austria" style="width:100%">
-        <div class="w3-container w3-white">
-          <h6>Mountains, Austria</h6>
-          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="./assets/images/ocean2.jpg" alt="Norway" style="width:100%">
-        <div class="w3-container w3-white">
-          <h6>West Coast, Norway</h6>
-          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-quarter w3-margin-bottom">
-      <div class="w3-card-4">
-        <img src="./assets/images/mountains2.jpg" alt="Austria" style="width:100%">
-        <div class="w3-container w3-white">
-          <h6>Mountains, Austria</h6>
-          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End page content -->
+  <!-- Populars -->
+  <app-populars></app-populars>
 </div>
