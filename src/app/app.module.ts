@@ -39,7 +39,7 @@ import { AppEffects } from './state/app.effects';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({state: appReducer}),
-    StoreDevtoolsModule.instrument(),
+    //StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
