@@ -33,7 +33,13 @@ export class CocktailService {
       mergeMap((cocktail:Cocktail) => {
         return zip(
           of(cocktail),
-          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0])),
+          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
+        )
+      }),
+      mergeMap(([random1, random2]: any[]) => {
+        return zip(
+          of(random1),
+          of(random2),
           this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0])),
           this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
         )
