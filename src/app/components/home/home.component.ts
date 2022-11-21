@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    console.log('ddd')
     this.store.dispatch(actions.closeSearch())
     this.store.dispatch(actions.loadRandomCocktails());
   }

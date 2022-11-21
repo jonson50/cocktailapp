@@ -28,5 +28,5 @@ export interface AppState {
   showHeader: boolean;
   showHome: boolean;
   randomCocktails: Cocktail[];
-  searchOptions: SearchOption[];
+  searchOptions: SearchOption;
 }

@@ -63,3 +63,9 @@ export interface CallCocktailResponse {
 export interface CallCocktailListResponse {
   drinks: CocktailList[]
 }
+
+export interface SearchOption {
+  id:number;
+  name: string;
+  value: string;
+}

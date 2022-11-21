@@ -8,17 +8,9 @@ import { CocktailService } from 'src/app/services/cocktail.service';
   templateUrl: './cocktail-card.component.html',
   styleUrls: ['./cocktail-card.component.scss']
 })
-export class CocktailCardComponent implements OnInit {
+export class CocktailCardComponent {
   @Input()
   cocktail!:Cocktail;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  select(d:any){
-    console.log(d)
-  }
-
 }

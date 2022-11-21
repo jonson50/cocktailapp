@@ -27,7 +27,7 @@ export class CocktailService {
     )
   }
 
-  getRandomCocktail(): Observable<any> {
+  getRandomCocktail(): Observable<Cocktail[]> {
     return this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(
       map((c: any) => c.drinks[0]),
       mergeMap((cocktail:Cocktail) => {
@@ -36,11 +36,18 @@ export class CocktailService {
           this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
         )
       }),
-      mergeMap(([random1, random2]: any[]) => {
+      mergeMap(([random1, random2]: Cocktail[]) => {
         return zip(
           of(random1),
           of(random2),
-          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0])),
+          this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
+        )
+      }),
+      mergeMap(([random1, random2, random3]: Cocktail[]) => {
+        return zip (
+          of(random1),
+          of(random2),
+          of(random3),
           this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
         )
       })

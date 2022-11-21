@@ -37,7 +37,7 @@ export const loadSearchOptions = createAction(
 
 export const loadSearchOptionsSuccess = createAction(
   '[App Cocktail] Cocktails Search Options Loaded Success',
-  props<{ searchOptions: SearchOption[]}>()
+  props<{ searchOptions: SearchOption}>()
 );
 
 

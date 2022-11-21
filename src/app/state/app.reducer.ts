@@ -7,7 +7,12 @@ export const initialState: AppState = {
   showHeader: true,
   showHome: true,
   randomCocktails: [],
-  searchOptions:[]
+  searchOptions: {
+    categories: [],
+    glasses: [],
+    ingredients:[],
+    alcoholics: []
+  },
 };
 
 export const appReducer = createReducer(
