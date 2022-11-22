@@ -26,3 +26,9 @@ export const selectSearchOptions = createSelector(
   selectAppState,
   (state: AppState) => state.searchOptions
 );
+
+
+export const selectSearchedCocktails = createSelector(
+  selectAppState,
+  (state: AppState) => state.searchedCocktails
+);

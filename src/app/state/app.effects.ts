@@ -32,8 +32,21 @@ export class AppEffects {
     )
   );
 
+  searchCocktail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[App Cocktail] Search Cocktails'),
+      mergeMap((opt: any) => {
+        return this.service.searchCocktail(opt.option, opt.value)
+          .pipe(
+            map(cocktails => ({ type: '[App Cocktail] Cocktails Searched Success', cocktails })),
+            catchError(() => of({ type: '[App Cocktail] Cocktails Searched Fails' }))
+          )
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private service: CocktailService
-  ) {}
+  ) { }
 }

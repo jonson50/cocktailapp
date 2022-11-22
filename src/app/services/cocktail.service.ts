@@ -30,7 +30,7 @@ export class CocktailService {
   getRandomCocktail(): Observable<Cocktail[]> {
     return this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(
       map((c: any) => c.drinks[0]),
-      mergeMap((cocktail:Cocktail) => {
+      mergeMap((cocktail: Cocktail) => {
         return zip(
           of(cocktail),
           this.http.get<Cocktail>(`${this.baseUrl}random.php`).pipe(map((c: any) => c.drinks[0]))
@@ -44,7 +44,7 @@ export class CocktailService {
         )
       }),
       mergeMap(([random1, random2, random3]: Cocktail[]) => {
-        return zip (
+        return zip(
           of(random1),
           of(random2),
           of(random3),
@@ -57,7 +57,7 @@ export class CocktailService {
   getSearchOptions(): Observable<SearchOption> {
     return this.http.get<Categorie>(`${this.baseUrl}list.php?c=list`).pipe(
       map((c: any) => c.drinks),
-      mergeMap((categorie:Categorie) => {
+      mergeMap((categorie: Categorie) => {
         return zip(
           of(categorie),
           this.http.get<Glass>(`${this.baseUrl}list.php?g=list`).pipe(map((c: any) => c.drinks)),
@@ -67,12 +67,23 @@ export class CocktailService {
       }),
       map(([categories, glasses, ingredients, alcoholics]: any[]) => {
         return ({
-                 categories,
-                 glasses,
-                 ingredients,
-                 alcoholics
-              });
-     }),
+          categories,
+          glasses,
+          ingredients,
+          alcoholics
+        });
+      }),
+    )
+  }
+
+  searchCocktail(option: string, value: string): Observable<Cocktail[]> {
+    let filter = '';
+    filter = !option ?
+      `search.php?s=${value}` :
+      `filter.php?${option[0]}=${value.toLowerCase()}`;
+
+    return this.http.get<Cocktail[]>(`${this.baseUrl}${filter}`).pipe(
+      map((c: any) => c.drinks)
     )
   }
 }

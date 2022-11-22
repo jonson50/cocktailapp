@@ -1,1 +1,16 @@
-<p>results-page works!</p>
+<div class="w3-content" style="max-width:1100px;">
+  <ng-container *ngIf="(searchedCocktails$ | async) as cocktails">
+    <div class="w3-row-padding w3-text-white w3-large">
+      <div class="w3-quarter w3-margin-bottom" *ngFor="let cocktail of cocktails">
+        <div class="w3-card-4" style="height: 360px;">
+          <img class="w3-hover-opacity w3-dropdown-hover" [src]="cocktail.strDrinkThumb" [alt]="cocktail.idDrink"
+            style="width:100%" height="260">
+          <div class="w3-container w3-white">
+            <h6 class="w3-text-red">{{ cocktail.strDrink }}</h6>
+            <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-red"></i>{{ cocktail.strGlass }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

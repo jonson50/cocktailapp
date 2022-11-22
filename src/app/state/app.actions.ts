@@ -53,3 +53,18 @@ export const loadRandomCocktailsSuccess = createAction(
 export const loadRandomCocktailsFail = createAction(
   '[App Cocktail] Random Cocktails Loaded Fails'
 );
+
+
+export const searchCocktail = createAction(
+  '[App Cocktail] Search Cocktails',
+  props<{ option: string, value: string}>()
+);
+
+export const searchCocktailSuccess = createAction(
+  '[App Cocktail] Cocktails Searched Success',
+  props<{ cocktails: Cocktail[]}>()
+);
+
+export const searchCocktailFails = createAction(
+  '[App Cocktail] Cocktails Searched Fails'
+);

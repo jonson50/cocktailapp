@@ -13,6 +13,7 @@ export const initialState: AppState = {
     ingredients:[],
     alcoholics: []
   },
+  searchedCocktails: []
 };
 
 export const appReducer = createReducer(
@@ -43,5 +44,8 @@ export const appReducer = createReducer(
   }),
   on(actions.loadSearchOptionsSuccess, (state, { searchOptions }) => {
     return {...state, searchOptions: searchOptions }
+  }),
+  on(actions.searchCocktailSuccess, (state, { cocktails }) => {
+    return {...state, searchedCocktails: cocktails }
   })
 );

@@ -29,4 +29,5 @@ export interface AppState {
   showHome: boolean;
   randomCocktails: Cocktail[];
   searchOptions: SearchOption;
+  searchedCocktails: Cocktail[];
 }
