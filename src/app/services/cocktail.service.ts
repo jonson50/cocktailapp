@@ -78,7 +78,7 @@ export class CocktailService {
 
   searchCocktail(option: string, value: string): Observable<Cocktail[]> {
     let filter = '';
-    filter = !option ?
+    filter = option === "name" ?
       `search.php?s=${value}` :
       `filter.php?${option[0]}=${value.toLowerCase()}`;
 

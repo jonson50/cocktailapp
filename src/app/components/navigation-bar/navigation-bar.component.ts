@@ -23,7 +23,7 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
 
   public options2: any[] = [];
   public options: SearchingOption[] = [
-    {id:0, name: 'Cocktail Name', value:''},
+    {id:0, name: 'Cocktail Name', value:'name'},
     {id:1, name: 'Category', value:'categories'},
     {id:2, name: 'Glass', value:'glasses'},
     {id:3, name: 'Ingredient', value:'ingredients'},
@@ -36,6 +36,7 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.selectedOption = this.options[0];
     this.suscription = this.store.select(selectors.selectSearchOptions).subscribe(opciones => {
       this.searchOptions = opciones;
     });
@@ -43,17 +44,17 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
   }
 
   togglePanel(): void {
-    this.selectedOption = this.options[0];
     this.store.dispatch(actions.toggleSearch())
   }
 
   search(): void {
-    this.store.dispatch(actions.searchCocktail({ option: this.selectedOption.value, value:this.selectedOption2 }));
-    this.router.navigate(['results', 'dddd']);
+    //this.store.dispatch(actions.searchCocktail({ option: this.selectedOption.value, value:this.selectedOption2 }));
+    this.router.navigate(['results', this.selectedOption.value, this.selectedOption2]);
   }
 
   selectOption1(event: any): void {
-    this.showInput = !event.value ? true: false;
+    this.showInput = event.value === "name" ? true: false;
+    this.selectedOption2 = null;
     if (Object.hasOwn(this.searchOptions, event.value)) {
       switch(event.value) {
         case 'categories':

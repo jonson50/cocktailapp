@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CocktailDetailComponent
   },
   {
-    path: 'results/:id',
+    path: 'results/:option/:id',
     component: ResultsPageComponent
   },
   { path: '**', redirectTo: 'home' },

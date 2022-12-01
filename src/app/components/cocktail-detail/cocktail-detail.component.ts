@@ -17,6 +17,7 @@ export class CocktailDetailComponent implements OnDestroy {
 
   constructor(private activatedRoute: ActivatedRoute, private service: CocktailService, private store: Store) {
     this.activatedRoute.params.subscribe( params => {
+      this.store.dispatch(actions.closeSearch());
       this.store.dispatch(actions.loadRandomCocktails());
       this.onGetCocktail = this.service.getCocktailById(params['id'])
       .subscribe(
