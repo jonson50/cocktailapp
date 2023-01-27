@@ -1,0 +1,54 @@
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.name-card {
+  position: relative;
+  width: auto; /* Maximum width */
+  height: 25vh;
+  margin: 0 auto; /* Center it */
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    width: 130%;
+    bottom: 0;
+  }
+
+  .content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgba(0, 0, 0, 0.8); /* Black background with 0.5 opacity */
+    width: 100%; /* Full width */
+    height: 100%;
+    padding: 20px; /* Some padding */
+  }
+
+  .bar-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    .title {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      max-width: 1100px;
+      font-size: 4.5vh;
+      font-weight: 600;
+      color: rgba(241, 241, 241, 0.7); /* Grey text */
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .name-card {
+    height: 22vh;
+
+    .bar-title {
+      .title {
+        padding-left: 13px;
+      }
+    }
+  }
+}

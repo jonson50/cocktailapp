@@ -1,15 +1,14 @@
-<div class="w3-content" style="max-width:1100px;">
+<div class="main-content padding-top flex-content">
   <ng-container *ngIf="(searchedCocktails$ | async) as cocktails">
-    <div class="w3-row-padding w3-text-white w3-large">
-      <div class="w3-quarter w3-margin-bottom" *ngFor="let cocktail of cocktails" [routerLink]="['/cocktail', cocktail.idDrink]">
-        <div class="w3-card-4">
-          <img class="w3-hover-opacity w3-dropdown-hover" [src]="cocktail.strDrinkThumb" [alt]="cocktail.idDrink"
-            style="width:100%" height="260">
-          <div class="w3-container w3-white">
-            <h6 class="w3-text-red" style="height: 45px;">{{ cocktail.strDrink }}</h6>
+        <div class="card" *ngFor="let cocktail of cocktails" [routerLink]="['/cocktail', cocktail.idDrink]">
+          <div class="flex-center">
+            <div>
+              <img class="image" [src]="cocktail.strDrinkThumb" [alt]="cocktail.idDrink">
+            </div>
           </div>
-        </div>
-      </div>
+          <div class="overlay">
+            {{ cocktail.strDrink }}
+          </div>
     </div>
   </ng-container>
 </div>

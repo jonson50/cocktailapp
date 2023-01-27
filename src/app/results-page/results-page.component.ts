@@ -14,7 +14,7 @@ export class ResultsPageComponent implements OnInit {
   constructor(private store: Store, private readonly activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.store.dispatch(actions.openSearch());
+    // this.store.dispatch(actions.openSearch());
     this.activatedRoute.params.subscribe( (params: any) => {
       this.store.dispatch(actions.searchCocktail({ option: params.option, value:params.id }));
     });

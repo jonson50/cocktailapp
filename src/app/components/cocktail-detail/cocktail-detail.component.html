@@ -1,23 +1,37 @@
-<div class="w3-content" style="max-width:1100px;" *ngIf="cocktail">
-  <div class="w3-container">
-    <h1>{{ cocktail.strDrink | titlecase }}</h1>
+<div class="name-card">
+  <img src="./assets/images/coctails.avif" alt="cocktails" class="image-card" />
+  <div class="content"></div>
+  <div class="bar-title">
+    <div class="title">{{ cocktail.strDrink | titlecase }}</div>
   </div>
+</div>
+<div class="main-content padding-top-20" *ngIf="cocktail">
+  <div class="w3-container"></div>
   <div class="w3-row-padding w3-large">
     <div class="w3-half w3-margin-bottom">
       <div class="w3-display-container">
-        <img class="w3-round" [src]="cocktail.strDrinkThumb" alt="Cinque Terre" style="width:100%">
+        <img class="w3-round" [src]="cocktail.strDrinkThumb" alt="Cinque Terre" style="width: 100%" />
       </div>
     </div>
     <div class="w3-half">
-      <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-row-padding" style="margin: 0 -16px">
         <div class="w3-container">
-          <p><span class="w3-tag w3-red w3-round">{{ cocktail.strAlcoholic | titlecase }}</span></p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-red" *ngIf="cocktail.strTags"></i>{{ cocktail.strTags | titlecase }}</p>
-          <p><i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-red"></i>{{ cocktail.strGlass | titlecase }}</p>
+          <div>
+            <span class="w3-tag w3-red w3-round w3-margin-bottom">{{
+              cocktail.strAlcoholic | titlecase
+              }}</span>
+            </div>
+          <div>
+            <i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-red" *ngIf="cocktail.strTags"></i>{{
+            cocktail.strTags | titlecase }}
+            </div>
+          <div>
+            <i class="fa fa-glass fa-fw w3-margin-right w3-large w3-text-red"></i>{{ cocktail.strGlass | titlecase }}
+          </div>
         </div>
       </div>
-      <br class="w3-hide-small">
-      <div class="w3-row-padding" style="margin:0 -16px">
+      <!-- <br class="w3-hide-small" /> -->
+      <div class="w3-row-padding" style="margin: 0 -16px">
         <h3 class="w3-container">Ingredients</h3>
         <table class="w3-table w3-striped">
           <tr *ngIf="cocktail.strIngredient1">
@@ -81,12 +95,12 @@
     </div>
 
     <div class="w3-container">
-      <br class="w3-hide-large">
+      <br class="w3-hide-large" />
       <h3>Preparation</h3>
       <p>{{ cocktail.strInstructions }}</p>
     </div>
   </div>
-  <hr>
+  <hr />
   <!-- Populars -->
   <app-populars></app-populars>
 </div>

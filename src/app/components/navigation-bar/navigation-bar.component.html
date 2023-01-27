@@ -1,32 +1,40 @@
 <!-- Navigation Bar -->
-<!-- <div class="w3-top"> -->
-<div class="w3-bar w3-xlarge">
-  <div class="w3-display-container w3-content" style="max-width:1500px">
-    <a routerLink="/" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-glass"></i>Take a
-        Drink</b></a>
-    <div class="w3-bar-item w3-button w3-right w3-hover-red w3-text-grey" (click)="togglePanel()"><i
-        class="fa fa-search"></i></div>
-  </div>
-</div>
-<div class="w3-content w3-margin-top w3-margin-bottom w3-animate-top" style="max-width:1100px;"
-  *ngIf="showSearchMenu$ | async">
-  <div class="w3-row">
-    <div class="w3-col w3-container m5 l5">
-      <select class="w3-select w3-border" [(ngModel)]="selectedOption" (ngModelChange)="selectOption1($event)">
-        <option *ngFor="let option of options" [ngValue]="option">{{ option.name }}</option>
-      </select>
+<div class="navigation-container">
+  <div class="top flex-center" [ngClass]="{'background-none': isNavBarTransparent}">
+    <div class="bar-nav flex-space-between">
+      <a routerLink="/home">
+        <b><i class="fa fa-glass"></i></b>Take a Drink</a>
+      <div (click)="togglePanel()" class="search-icon">
+        <i class="fa fa-search"></i>
+      </div>
     </div>
-    <div class="w3-col w3-container m5 l5">
-      <input class="w3-input w3-border" type="text" placeholder="Cokctail Name" *ngIf="showInput else select" [(ngModel)]="selectedOption2">
-      <ng-template #select>
-        <select class="w3-select w3-border" [(ngModel)]="selectedOption2">
-          <option *ngFor="let option of options2" [ngValue]="option.value">{{ option.value | titlecase }}</option>
+  </div>
+  <div class="flex-center">
+    <div class="search-menu flex-space-between" *ngIf="showSearchMenu$ | async">
+      <div class="search-item">
+        <select class="td-select" [(ngModel)]="selectedOption" (ngModelChange)="selectOption1($event)">
+          <option *ngFor="let option of options" [ngValue]="option">
+            {{ option.name }}
+          </option>
         </select>
-      </ng-template>
-    </div>
-    <div class="w3-col w3-container m2 l2">
-      <button class="w3-button w3-block w3-red" (click)="search()">Search</button>
+      </div>
+      <div class="search-item">
+        <input class="td-input" type="text" placeholder="Cokctail Name" *ngIf="showInput; else select"
+          [(ngModel)]="selectedOption2" />
+        <ng-template #select>
+          <select class="td-select" [(ngModel)]="selectedOption2">
+            <option *ngFor="let option of options2" [ngValue]="option.value">
+              {{ option.value | titlecase }}
+            </option>
+          </select>
+        </ng-template>
+      </div>
+      <div>
+        <button class="w3-button w3-block w3-red" (click)="search()">
+          Search
+        </button>
+      </div>
     </div>
   </div>
-  <!--  {{(searchOptions$ | async) | json}} -->
 </div>
+
