@@ -2,6 +2,15 @@
   padding: 0 8px;
 }
 
-.w3-card-4 {
-  height: 390px;
+.w3-card-2 {
+  height: auto;
+  max-height: 390px;
+  overflow: hidden;
+  margin: 0 8px;
+
+  .imagen {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+  }
 }

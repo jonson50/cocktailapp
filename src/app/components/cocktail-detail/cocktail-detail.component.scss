@@ -2,6 +2,20 @@
   padding-top: 20px;
 }
 
+.animated-show {
+  animation: animateshow 0.5s;
+}
+
+@keyframes animateshow {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
 .name-card {
   position: relative;
   width: auto; /* Maximum width */

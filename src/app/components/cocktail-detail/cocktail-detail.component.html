@@ -1,12 +1,12 @@
-<div class="name-card">
+<div class="name-card animated-show" *ngIf="cocktail">
   <img src="./assets/images/coctails.avif" alt="cocktails" class="image-card" />
   <div class="content"></div>
   <div class="bar-title">
     <div class="title">{{ cocktail.strDrink | titlecase }}</div>
   </div>
 </div>
-<div class="main-content padding-top-20" *ngIf="cocktail">
-  <div class="w3-container"></div>
+<div class="main-content padding-top-20 animated-show" *ngIf="cocktail">
+  <!-- <div class="w3-container"></div> -->
   <div class="w3-row-padding w3-large">
     <div class="w3-half w3-margin-bottom">
       <div class="w3-display-container">

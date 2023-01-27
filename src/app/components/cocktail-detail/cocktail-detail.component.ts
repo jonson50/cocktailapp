@@ -12,11 +12,12 @@ import * as actions from 'src/app/state/app.actions';
   styleUrls: ['./cocktail-detail.component.scss']
 })
 export class CocktailDetailComponent implements OnDestroy {
-  cocktail!:Cocktail;
+  cocktail!:Cocktail | null;
   onGetCocktail!:Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private service: CocktailService, private store: Store) {
     this.activatedRoute.params.subscribe( params => {
+      this.cocktail = null;
       this.store.dispatch(actions.closeSearch());
       this.store.dispatch(actions.loadRandomCocktails());
       this.onGetCocktail = this.service.getCocktailById(params['id'])

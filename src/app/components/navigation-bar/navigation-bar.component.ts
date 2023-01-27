@@ -38,7 +38,6 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
   onScroll(event: any) {
-    console.log(this.isNavBarTransparent)
     if(this.currentRoute !== '/home') {
       this.isNavBarTransparent = false;
       return;
@@ -67,7 +66,6 @@ export class NavigationBarComponent implements OnInit, OnDestroy {
           .subscribe((event: { url: any; }) =>
            {
               this.currentRoute = event.url;
-              console.log(this.currentRoute)
               this.isNavBarTransparent = (this.currentRoute === '/home' || this.currentRoute === '/' ) ? true : false;
            });
   }
