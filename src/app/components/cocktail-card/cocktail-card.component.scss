@@ -12,5 +12,12 @@
     position: relative;
     height: 260px;
     overflow: hidden;
+    transition: transform 5s;
   }
+}
+
+.w3-card-2:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
 }

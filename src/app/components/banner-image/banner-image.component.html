@@ -1,4 +1,5 @@
-<div class="w3-display-container w3-hover-opacity w3-dropdown-hover" [routerLink]="['/cocktail', CocktailImage?.idDrink]">
-  <img [src]="CocktailImage?.strDrinkThumb" [alt]="CocktailImage?.strDrink" style="width:100%">
-  <span class="w3-display-bottomleft w3-padding w3-tag w3-red">{{ CocktailImage?.strDrink }}</span>
+<div class="w3-display-container w3-dropdown-hover w3-round-large cocktail-img" [routerLink]="['/cocktail', CocktailImage?.idDrink]">
+  <img [src]="CocktailImage?.strDrinkThumb" class="w3-hover-grayscale"
+      [alt]="CocktailImage?.strDrink">
+  <span class="w3-display-bottomleft w3-padding w3-tag">{{ CocktailImage?.strDrink }}dd</span>
 </div>

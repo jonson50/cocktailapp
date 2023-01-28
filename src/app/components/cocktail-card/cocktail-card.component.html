@@ -1,8 +1,8 @@
 <ng-container *ngIf="cocktail">
   <div class="w3-col l3 m6 w3-margin-bottom" [routerLink]="['/cocktail', cocktail.idDrink]">
-    <div class="w3-card-2 w3-round">
+    <div class="w3-card-2 w3-round-large">
       <div class="imagen">
-        <img class="w3-hover-opacity w3-dropdown-hover" [src]="cocktail.strDrinkThumb" [alt]="cocktail.idDrink"
+        <img [src]="cocktail.strDrinkThumb" [alt]="cocktail.idDrink"
         style="width:100%" height="auto">
       </div>
       <div class="w3-container w3-white">
